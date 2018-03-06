@@ -1,18 +1,27 @@
 import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
-
+/**
+ * Analizador de accesos al servidor.
+ * @author (Sergio Acebes)
+ * @version (06/03/2018)
+ */
 public class AnalizadorAccesosAServidor
 {
     private ArrayList<Acceso> accesos;
-    
-    
+    /**
+     * Constructor de objetos de la clase AnalizadorAccesosAServidor.
+     */
     public AnalizadorAccesosAServidor() 
     {
         accesos = new ArrayList<>();
     }
     
-    
+    /**
+     * Analizador de un archivo que introduiremos como parametro.
+     * @param archivo - nombre del archivo de log a analizar.
+     * 
+     */
     public void analizarArchivoDeLog(String archivo)
     {
         accesos.clear();
@@ -22,11 +31,8 @@ public class AnalizadorAccesosAServidor
             while (sc.hasNextLine()) {
                 String lineaLeida = sc.nextLine();               
                 String[] elementosLinea = lineaLeida.split(" ");
-                Acceso accesoActual = new Acceso(Integer.parseInt(elementosLinea[0]), 
-                                                 Integer.parseInt(elementosLinea[1]), 
-                                                 Integer.parseInt(elementosLinea[2]),
-                                                 Integer.parseInt(elementosLinea[3]), 
-                                                 Integer.parseInt(elementosLinea[4]));               
+                Acceso accesoActual = new Acceso(lineaLeida);
+                                                               
                 
                 accesos.add(accesoActual);
             }
@@ -37,7 +43,10 @@ public class AnalizadorAccesosAServidor
         }
     }
     
-    
+    /**
+     * Metodo que nos develve la hora con mas accesos al servidor.
+     * @return - hora con mas accesos.
+     */
     public int obtenerHoraMasAccesos() 
     {
         int valorADevolver = -1;
@@ -65,8 +74,6 @@ public class AnalizadorAccesosAServidor
         return valorADevolver;
     }
 
-    
-    
     public String paginaWebMasSolicitada() 
     {
         return "";
