@@ -6,24 +6,30 @@
 
 public class Acceso
 {
+    private String ip;
     private int ano;
     private int mes;
     private int dia;
     private int hora;
     private int minutos;
+    private String paginaWeb;
+    private int codigoServidor;
     /**
      * Constructor de objetos de la clase Acceso.
      * @param datos - Cadena con todos los datos del acceso 
-     * separado por espacios(año,mes,dia,hora,minuto)
+     * separado por espacios(ip,año,mes,dia,hora,minuto,pagina web y codigo servidor).
      */
     public Acceso(String datos)
     {
         String[] datosAccesos = datos.split(" ");
-        this.ano = Integer.parseInt(datosAccesos[0]);
-        this.mes = Integer.parseInt(datosAccesos[1]);
-        this.dia = Integer.parseInt(datosAccesos[2]);;
-        this.hora = Integer.parseInt(datosAccesos[3]);
-        this.minutos = Integer.parseInt(datosAccesos[4]);
+        this.ip = datosAccesos[0];
+        this.ano = Integer.parseInt(datosAccesos[1].substring(1,4));
+        this.mes = Integer.parseInt(datosAccesos[2]);
+        this.dia = Integer.parseInt(datosAccesos[3]);;
+        this.hora = Integer.parseInt(datosAccesos[4]);
+        this.minutos = Integer.parseInt(datosAccesos[5].substring(0,1));
+        this.paginaWeb = datosAccesos[6];
+        this.codigoServidor =  Integer.parseInt(datosAccesos[7]);
     }
 
     /**
